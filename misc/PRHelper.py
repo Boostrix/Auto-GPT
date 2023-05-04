@@ -90,17 +90,16 @@ def compute_heuristics(prs, session, headers, max_file_conflicts):
 
 def main():
     parser = argparse.ArgumentParser(description="Fetch PR data and compute heuristics for simple PRs")
-    parser.add_argument("project_id", help="GitHub project ID", default="Auto-GPT")
+    parser.add_argument("--project-id", type=str, help="GitHub project ID", default="Auto-GPT")
+
     parser.add_argument("--url", help="GitHub API URL", default="https://api.github.com/repos/Significant-Gravitas/Auto-GPT/pulls?q=is%3Apr+is%3Aopen+-is%3Aconflict")
-    # TODO: currently unused:
-    parser.add_argument("--per-page", help="params per page", default=300)
+    parser.add_argument("--per-page", help="params per page", default=100)
     parser.add_argument("--cache-time-sec", help="cache time in seconds", default=3600)
     parser.add_argument("--max-mutual-pr-conflicts", help="max number of files touched by other PRs (default:0)", default=0)
-    
+
     args = parser.parse_args()
 
     params = {"per_page": args.per_page}
-
 
     id = args.project_id
     filename = f"{id}.json"

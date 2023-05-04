@@ -127,7 +127,8 @@ def main():
             access_token = f.read().strip()
     else:
         access_token = None
-        print("Warning: GitHub access token not found in environment variable or file. (you will be subject to API restrictions)")
+        print(f"Warning: GitHub access token not found in environment variable {token_env_var} or file: {token_file}")
+        print("Without GitHub Token, you WILL be subject to API restrictions")
         print("Set up an access token at: https://github.com/settings/tokens")
 
     # Add the access token to the API request headers, if available

@@ -9,6 +9,27 @@ from typing import List, Dict, Any, Tuple
 import concurrent.futures
 import argparse
 
+#####
+# NOTE: For the time being this is just a rough prototype, it's not even a proper class.
+# So, if this is to be used as a plugin inside Auto-GPT one day, there are some things that need to happen first.
+# For now, the focus was on tinkering with the original idea.
+#
+# If we're going to play with this, we should probably split up the whole thing and come up with a helper Class to manage PRs,
+# as was suggested in the original discussion.
+#
+# Also, JSON caching should be supported, too. 
+# The plugin would then register a few command (categories really) to allow the agent to fetch PR/issue data in JSON data from github
+# the project/URL can be easily made configurable already, so people could tinker with different repos.
+# For now, the whole thing will remain strictly read-only, to  help with identifying interesting PRs/issues.
+# At some point, this could be changed to also provide a feature to automatically comment on PRs/issues, for instance in order to inform people about overlapping PRs
+#
+# Obviously, as some folks mentioned in the original issue, the holy grail would be getting Auto-GPT to use this plugin to tackle feature requests and some up with PRs on its own
+# Initially, these could be focused on non-code "contributions", i.e. README files, docs or comments (docstrings)
+# The plugin could also be used to help review/summarize and label/classify new issues
+#
+# if you'd like to get involved, feel free to reach out
+
+
 cache_time_seconds = 3600  # TODO: Cache time in seconds, set to one hour by default
 
 # Set up the API request headers and parameters
